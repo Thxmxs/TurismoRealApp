@@ -1,0 +1,42 @@
+﻿@using TurismoRealWeb.Negocio
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Departamentos</h2>
+@{ List<Departamento> departamentos = (List<Departamento>)ViewBag.departamentos;}
+
+
+@foreach (var departamento in departamentos)
+{
+  
+        <div class="contenedor">
+            <div class="imagen" width="500px">
+                <img src="https://i.pinimg.com/736x/3a/ab/e0/3aabe0e9a520b9ad90407a82f85adb42.jpg" />
+            </div>
+            <div class="informacion">
+                <div class="informacion-departamento">
+                    
+                    <p>Departamento ubicado en @departamento.direccion en la comuna de @departamento.comuna.nombreComuna en la provincia de @departamento.provincia.nombreProvincia en la region  @departamento.region.nombreRegion</p>
+                    <p>valor por dia @departamento.costoDepartamento</p>
+                    <p>@departamento.descripcionEstadoDepartamento</p>
+                    <p>@departamento.orientacionDepartamento</p>
+                    <p>posee estacionamiento ? @departamento.estacionamiento</p>
+                    <p>cuenta con @departamento.numEstacionamiento estacionamiento/s</p>
+                    <p>cuenta con @departamento.numBaño baño/s</p>
+
+
+                    @Html.ActionLink("Reservar", "Create", new { id = departamento.idDepartamento});
+                    @TempData["mensaje"]
+
+                </div>
+            </div>
+        </div>
+
+
+
+    
+
+}
+

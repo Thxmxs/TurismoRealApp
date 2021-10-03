@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TurismoRealWeb.Negocio;
 using System.Web.Security;
 
+
 namespace TurismoRealWeb.Controllers
 {
     public class AuthController : Controller
@@ -14,13 +15,17 @@ namespace TurismoRealWeb.Controllers
 
         public ActionResult Login()
         {
+           
             return View();
         }
         [HttpPost]
         public ActionResult Login(CuentaUsuario cuentaUsuario,string ReturnUrl)
         {
+            
+            
             if (IsValid(cuentaUsuario))
             {
+           
                 FormsAuthentication.SetAuthCookie(cuentaUsuario.emailUsuario,false);//crea una cookie
                 if(ReturnUrl != null)
                 {
@@ -28,7 +33,9 @@ namespace TurismoRealWeb.Controllers
                 }
                 return RedirectToAction("Index", "Home");
             }
+            
             return View(cuentaUsuario);
+            
         }
         private bool IsValid(CuentaUsuario cuentaUsuario)
         {
@@ -39,6 +46,7 @@ namespace TurismoRealWeb.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
 
 
     }

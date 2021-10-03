@@ -32,5 +32,19 @@ namespace TurismoRealWeb.Negocio
                 return false;
             }
         }
+        public Usuario find(String email)
+        {
+            return this.db.USUARIO.Select(u => new Usuario()
+            {
+                rutUsuario = u.RUT_USUARIO,
+                nombre = u.NOMBRE,
+                apellido = u.APELLIDO,
+                email = u.EMAIL,
+                direccion = u.DIRECCION,
+                telefono = u.TELEFONO,
+                idCuentaUsuario = u.CUENTA_USUARIO_ID_CUENTA_USUARIO
+            }).Where( us=> us.email == email).FirstOrDefault();
+        }
+
     }
 }

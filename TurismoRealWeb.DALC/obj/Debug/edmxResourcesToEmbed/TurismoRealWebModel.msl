@@ -253,6 +253,7 @@
     <EntitySetMapping Name="SERVICIO">
       <EntityTypeMapping TypeName="Model.SERVICIO">
         <MappingFragment StoreEntitySet="SERVICIO">
+          <ScalarProperty Name="COSTO_SERVICIO" ColumnName="COSTO_SERVICIO" />
           <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
           <ScalarProperty Name="NOMBRE_SERVICIO" ColumnName="NOMBRE_SERVICIO" />
           <ScalarProperty Name="FECHA_SERVICIO" ColumnName="FECHA_SERVICIO" />

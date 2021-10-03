@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ACOMPAÑANTE">
           <Key>
             <PropertyRef Name="ID_ACOMPAÑANTE" />
@@ -244,6 +244,7 @@
           <Property Name="FECHA_SERVICIO" Type="date" />
           <Property Name="CONTRATO_ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="COSTO_SERVICIO" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="TIPO_USUARIO">
           <Key>
@@ -670,6 +671,7 @@
           <Parameter Name="R_FECHA_SALIDA" Type="date" Mode="In" />
           <Parameter Name="R_FIRMA_CONFORMIDAD_CLIENTE" Type="varchar2" Mode="In" />
           <Parameter Name="R_ID_USUARIO" Type="varchar2" Mode="In" />
+          <Parameter Name="D_ID_DEPARTAMENTO" Type="number" Mode="In" />
         </Function>
         <Function Name="SP_CREATE_RESERVAA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TURISMOREALAPP">
           <Parameter Name="R_FECHA_ENTRADA" Type="date" Mode="In" />
@@ -882,8 +884,7 @@
             <End Role="VEHICULO" EntitySet="VEHICULO" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1178,6 +1179,7 @@
           <Property Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CONTRATO" Relationship="Self.SERVICIO_CONTRATO_FK" FromRole="SERVICIO" ToRole="CONTRATO" />
           <NavigationProperty Name="DETALLE_SERVICIO_EXTRA" Relationship="Self.DETALLE_SERVICIO_EXTRA_SERVICIO_FK" FromRole="SERVICIO" ToRole="DETALLE_SERVICIO_EXTRA" />
+          <Property Name="COSTO_SERVICIO" Type="Decimal" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="TIPO_USUARIO">
           <Key>
@@ -1764,6 +1766,7 @@
             <Parameter Name="R_FECHA_SALIDA" Mode="In" Type="DateTime" />
             <Parameter Name="R_FIRMA_CONFORMIDAD_CLIENTE" Mode="In" Type="String" />
             <Parameter Name="R_ID_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="D_ID_DEPARTAMENTO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_CREATE_RESERVAA">
             <Parameter Name="R_FECHA_ENTRADA" Mode="In" Type="DateTime" />
@@ -1805,7 +1808,7 @@
             <Parameter Name="V_ID_CUENTA_USUARIO" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_DELETE_RESERVA">
-            <Parameter Name="V_ID_RESERVA" Mode="In" Type="Decimal" />
+          <Parameter Name="V_ID_RESERVA" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_UPDATE_RESERVA">
             <Parameter Name="V_ID_RESERVA" Mode="In" Type="Decimal" />
@@ -2082,6 +2085,7 @@
           <EntitySetMapping Name="SERVICIO">
             <EntityTypeMapping TypeName="Model.SERVICIO">
               <MappingFragment StoreEntitySet="SERVICIO">
+                <ScalarProperty Name="COSTO_SERVICIO" ColumnName="COSTO_SERVICIO" />
                 <ScalarProperty Name="ID_SERVICIO" ColumnName="ID_SERVICIO" />
                 <ScalarProperty Name="NOMBRE_SERVICIO" ColumnName="NOMBRE_SERVICIO" />
                 <ScalarProperty Name="FECHA_SERVICIO" ColumnName="FECHA_SERVICIO" />

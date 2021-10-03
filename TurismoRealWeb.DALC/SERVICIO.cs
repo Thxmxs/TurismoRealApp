@@ -24,6 +24,7 @@ namespace TurismoRealWeb.DALC
         public Nullable<System.DateTime> FECHA_SERVICIO { get; set; }
         public decimal CONTRATO_ID_CONTRATO { get; set; }
         public string CONTRATO_PROVEEDOR_ID_PROVEEDOR { get; set; }
+        public Nullable<decimal> COSTO_SERVICIO { get; set; }
     
         public virtual CONTRATO CONTRATO { get; set; }
         public virtual ICollection<DETALLE_SERVICIO_EXTRA> DETALLE_SERVICIO_EXTRA { get; set; }

@@ -291,6 +291,7 @@
     <Property Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="CONTRATO" Relationship="Self.SERVICIO_CONTRATO_FK" FromRole="SERVICIO" ToRole="CONTRATO" />
     <NavigationProperty Name="DETALLE_SERVICIO_EXTRA" Relationship="Self.DETALLE_SERVICIO_EXTRA_SERVICIO_FK" FromRole="SERVICIO" ToRole="DETALLE_SERVICIO_EXTRA" />
+    <Property Name="COSTO_SERVICIO" Type="Decimal" Precision="38" Scale="0" />
   </EntityType>
   <EntityType Name="TIPO_USUARIO">
     <Key>
@@ -877,6 +878,7 @@
       <Parameter Name="R_FECHA_SALIDA" Mode="In" Type="DateTime" />
       <Parameter Name="R_FIRMA_CONFORMIDAD_CLIENTE" Mode="In" Type="String" />
       <Parameter Name="R_ID_USUARIO" Mode="In" Type="String" />
+      <Parameter Name="D_ID_DEPARTAMENTO" Mode="In" Type="Decimal" />
     </FunctionImport>
     <FunctionImport Name="SP_CREATE_RESERVAA">
       <Parameter Name="R_FECHA_ENTRADA" Mode="In" Type="DateTime" />

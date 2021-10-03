@@ -9,6 +9,7 @@ namespace TurismoRealWeb.Controllers
 {
     public class RegisterController : Controller
     {
+        
         // GET: Register
         public ActionResult Index()
         {
@@ -34,6 +35,7 @@ namespace TurismoRealWeb.Controllers
         {
             try
             {
+         
                 // TODO: Add insert logic here
                 usuario.Save();
                 TempData["mensaje"] = "Registrado correctamente";
