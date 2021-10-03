@@ -29,6 +29,9 @@
                         <li>
                             <a>@User.Identity.Name</a>
                         </li>
+                        <li>
+                            @Html.ActionLink("Departamentos", "index", "Departamento")
+                        </li>
                     }
                     else
                     {
@@ -39,6 +42,7 @@
                             @Html.ActionLink("Registrarme", "Create", "Register");
                         </li>
                     }
+
                 </ul>
             </div>
         </div>
@@ -54,5 +58,8 @@
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    @RenderSection("scripts", required: false)
 </body>
 </html>

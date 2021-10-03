@@ -1,0 +1,25 @@
+﻿@model TurismoRealWeb.Negocio.Reserva
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Agregar una nueva reserva</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.LabelFor(r => r.fechaEntrada)
+    @Html.TextBoxFor(r => r.fechaEntrada)
+    <br>
+    @Html.LabelFor(p => p.fechaSalida)
+    @Html.TextBoxFor(p => p.fechaSalida)
+    <br>
+    @Html.LabelFor(p => p.firmaConformidadCliente)
+    @Html.TextBoxFor(p => p.firmaConformidadCliente)
+    <br>
+    <button>Guardar Reserva</button>
+
+
+
+
+}

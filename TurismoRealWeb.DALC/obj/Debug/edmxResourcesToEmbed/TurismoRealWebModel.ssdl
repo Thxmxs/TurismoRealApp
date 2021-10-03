@@ -239,6 +239,7 @@
     <Property Name="FECHA_SERVICIO" Type="date" />
     <Property Name="CONTRATO_ID_CONTRATO" Type="number" Precision="38" Scale="0" Nullable="false" />
     <Property Name="CONTRATO_PROVEEDOR_ID_PROVEEDOR" Type="varchar2" MaxLength="15" Nullable="false" />
+    <Property Name="COSTO_SERVICIO" Type="number" Precision="38" Scale="0" />
   </EntityType>
   <EntityType Name="TIPO_USUARIO">
     <Key>
@@ -665,6 +666,7 @@
     <Parameter Name="R_FECHA_SALIDA" Type="date" Mode="In" />
     <Parameter Name="R_FIRMA_CONFORMIDAD_CLIENTE" Type="varchar2" Mode="In" />
     <Parameter Name="R_ID_USUARIO" Type="varchar2" Mode="In" />
+    <Parameter Name="D_ID_DEPARTAMENTO" Type="number" Mode="In" />
   </Function>
   <Function Name="SP_CREATE_RESERVAA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TURISMOREALAPP">
     <Parameter Name="R_FECHA_ENTRADA" Type="date" Mode="In" />

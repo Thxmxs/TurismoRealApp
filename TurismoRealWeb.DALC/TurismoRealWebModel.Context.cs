@@ -60,7 +60,7 @@ namespace TurismoRealWeb.DALC
         public DbSet<USUARIO> USUARIO { get; set; }
         public DbSet<VEHICULO> VEHICULO { get; set; }
     
-        public virtual int SP_CREATE_RESERVA(Nullable<System.DateTime> r_FECHA_ENTRADA, Nullable<System.DateTime> r_FECHA_SALIDA, string r_FIRMA_CONFORMIDAD_CLIENTE, string r_ID_USUARIO)
+        public virtual int SP_CREATE_RESERVA(Nullable<System.DateTime> r_FECHA_ENTRADA, Nullable<System.DateTime> r_FECHA_SALIDA, string r_FIRMA_CONFORMIDAD_CLIENTE, string r_ID_USUARIO, Nullable<decimal> d_ID_DEPARTAMENTO)
         {
             var r_FECHA_ENTRADAParameter = r_FECHA_ENTRADA.HasValue ?
                 new ObjectParameter("R_FECHA_ENTRADA", r_FECHA_ENTRADA) :
@@ -78,7 +78,11 @@ namespace TurismoRealWeb.DALC
                 new ObjectParameter("R_ID_USUARIO", r_ID_USUARIO) :
                 new ObjectParameter("R_ID_USUARIO", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CREATE_RESERVA", r_FECHA_ENTRADAParameter, r_FECHA_SALIDAParameter, r_FIRMA_CONFORMIDAD_CLIENTEParameter, r_ID_USUARIOParameter);
+            var d_ID_DEPARTAMENTOParameter = d_ID_DEPARTAMENTO.HasValue ?
+                new ObjectParameter("D_ID_DEPARTAMENTO", d_ID_DEPARTAMENTO) :
+                new ObjectParameter("D_ID_DEPARTAMENTO", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CREATE_RESERVA", r_FECHA_ENTRADAParameter, r_FECHA_SALIDAParameter, r_FIRMA_CONFORMIDAD_CLIENTEParameter, r_ID_USUARIOParameter, d_ID_DEPARTAMENTOParameter);
         }
     
         public virtual int SP_CREATE_RESERVAA(Nullable<System.DateTime> r_FECHA_ENTRADA, Nullable<System.DateTime> r_FECHA_SALIDA, string r_FIRMA_CONFORMIDAD_CLIENTE, string r_ID_USUARIO)
